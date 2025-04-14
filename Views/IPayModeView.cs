@@ -14,8 +14,8 @@ namespace Supermarket_mvp.Views
         string PayModeObservation { get; set; }
 
         string SearchValue { get; set; }
-        bool isEdit { get; set; }
-        bool isSuccessful { get; set; }
+        bool IsEdit { get; set; }
+        bool IsSuccessful { get; set; }
         string Message { get; set; }
 
         event EventHandler SearchEvent;

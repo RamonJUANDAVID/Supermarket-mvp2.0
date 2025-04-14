@@ -13,11 +13,29 @@ namespace Supermarket_mvp.Views
 {
     public partial class PayModeView : Form, IPayModeView
     {
+        private bool isEdit;
+        private bool isSuccessful;
+        private string message;
+
         public PayModeView()
         {
             InitializeComponent();
+            AssociateAndRaiseViewEvents();
+
+            tabControl1.TabPages.Remove(tabPagePayModeDetail);
         }
 
+        private void AssociateAndRaiseViewEvents()
+        {
+            BtnSearch.Click += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
+            TxtSearch.KeyDown += (s,e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    SearchEvent?.Invoke(this, EventArgs.Empty);
+                }
+            };
+        }
 
         public event EventHandler SearchEvent;
         public event EventHandler AddnNewEvent;
@@ -60,7 +78,11 @@ namespace Supermarket_mvp.Views
             get { return isSuccessful; }
             set { isSuccessful = value; }
         }
-       
+       public string Message
+        {
+            get { return message; }
+            set { message = value; }
+        }
        
         }
     
