@@ -4,17 +4,65 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Supermarket_mvp.Views
 {
-    public partial class PayModeView : Form
+    public partial class PayModeView : Form, IPayModeView
     {
         public PayModeView()
         {
             InitializeComponent();
         }
+
+
+        public event EventHandler SearchEvent;
+        public event EventHandler AddnNewEvent;
+        public event EventHandler EditEvent;
+        public event EventHandler DeleteEvent;
+        public event EventHandler SaveEvente;
+        public event EventHandler CancelEvent;
+
+        public void SetPayModeListBildingSource(BindingSource payModelist)
+        {
+            DgPayMode.DataSource = payModelist;
+        }
+        public string PayModeId
+        {
+            get { return TxtPayModeId.Text; }
+            set { TxtPayModeId.Text = value; }
+        }
+        public string PayModeName
+        {
+            get { return TxtPayModeName.Text; }
+            set { TxtPayModeName.Text = value; }
+        }
+        public string PayModeObservation
+        {
+            get { return TxtPayModeObservation.Text; }
+            set { TxtPayModeObservation.Text = value; }
+        }
+        public string SearchValue
+        {
+            get { return TxtSearch.Text; }
+            set { TxtSearch.Text = value; }
+        }
+        public bool IsEdit
+        {
+            get { return isEdit; }
+            set { isEdit = value; }
+        }
+        public bool IsSuccessful
+        {
+            get { return isSuccessful; }
+            set { isSuccessful = value; }
+        }
+       
+       
+        }
+    
     }
-}
+
