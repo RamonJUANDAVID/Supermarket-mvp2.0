@@ -1,12 +1,15 @@
-﻿using System;
+﻿using Supermarket_mvp.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Supermarket_mvp._Repositories
 {
     internal interface IProductRepository
     {
+        int ProductId { get; set; }
+        void Add(ProductModel productModel);
+        void Edit(ProductModel productModel);
+        void Delete(int id);
+        IEnumerable<ProductModel> GetAll();
+        IEnumerable<ProductModel> GetByValue(string value);
     }
 }
